@@ -512,7 +512,7 @@ REINIT://重新初始化
   	LCD_ShowString(5,ypos+fsize*j,lcddev.width,lcddev.height,fsize, "SYSTEM Starting...");  
 	//蜂鸣器短叫,提示正常启动
 	BEEP=1;
-	delay_ms(100);
+//	delay_ms(100);
 	BEEP=0; 
 	myfree(SRAMIN,version);	
 	delay_ms(1500);
