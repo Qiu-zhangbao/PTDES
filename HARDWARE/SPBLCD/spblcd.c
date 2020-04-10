@@ -160,7 +160,12 @@ void slcd_frame_show(u16 x)
 	{
 		LCD_Set_Window(spbdev.stabarheight,0,spbdev.spbheight,spbdev.spbwidth);
 		LCD_SetCursor(spbdev.stabarheight,0);//设置光标位置 
-	}else
+	}
+	else if(lcddev.id==0x9486)
+	{
+		LCD_Set_Window(spbdev.stabarheight,0,spbdev.spbheight,spbdev.spbwidth);
+	}
+	else
 	{
 		LCD_Set_Window(0,spbdev.stabarheight,spbdev.spbwidth,spbdev.spbheight);
 		if(lcddev.id!=0X1963)LCD_SetCursor(0,spbdev.stabarheight);//设置光标位置 		

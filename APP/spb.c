@@ -201,7 +201,7 @@ u8 spb_init(u8 mode)
 	spbdev.selico=0xff; 
 	if(lcddev.id!=0X9341&&lcddev.id!=0X9320&&lcddev.id!=0X9325&&lcddev.id!=0X9328&&lcddev.id!=0X9331&&
 	   lcddev.id!=0X6804&&lcddev.id!=0X5310&&lcddev.id!=0X5510&&lcddev.id!=0X1963&&lcddev.id!=0X1505&&
-	   lcddev.id!=0XB505&&lcddev.id!=0XC505&&lcddev.id!=0X4531&&lcddev.id!=0X4535&&lcddev.id!=0X5408)return 0Xff;//非法的ID
+	   lcddev.id!=0XB505&&lcddev.id!=0XC505&&lcddev.id!=0X4531&&lcddev.id!=0X4535&&lcddev.id!=0X5408&&lcddev.id!=0x9486)return 0Xff;//非法的ID
 	if(lcddev.width==240)	//对于240*320的LCD屏幕
 	{ 
 		lcdtype=0;
