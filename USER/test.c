@@ -548,8 +548,6 @@ void main_task(void *pdata)
 	spb_init(0);		//初始化SPB界面
 	spb_load_mui();		//加载SPB主界面
 	slcd_frame_show(0);	//显示界面
-
-
 	while(1)
 	{
 		selx=spb_move_chk(); 

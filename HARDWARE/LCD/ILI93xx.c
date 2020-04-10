@@ -158,27 +158,35 @@ void opt_delay(u8 i)
 u16 LCD_ReadPoint(u16 x,u16 y)
 {
  	u16 r=0,g=0,b=0;
-	if(x>=lcddev.width||y>=lcddev.height)return 0;	//超过了范围,直接返回		   
-	LCD_SetCursor(x,y);	    
+	if(x>=lcddev.width||y>=lcddev.height)return 0;	//超过了范围,直接返回	
+	
+	LCD_SetCursor(x,y);//设置光标
+	
 	if(lcddev.id==0X9341||lcddev.id==0X6804||lcddev.id==0X5310||lcddev.id==0X1963||lcddev.id==0X9486)LCD_WR_REG(0X2E);//9341/6804/3510/1963 发送读GRAM指令
 	else if(lcddev.id==0X5510)LCD_WR_REG(0X2E00);	//5510 发送读GRAM指令
 	else LCD_WR_REG(0X22);      		 			//其他IC发送读GRAM指令
+	
+	
 	if(lcddev.id==0X9320)opt_delay(2);				//FOR 9320,延时2us	    
  	r=LCD_RD_DATA();								//dummy Read	   
 	if(lcddev.id==0X1963)return r;					//1963直接读就可以 
-	opt_delay(2);	  
+	opt_delay(2);	
+	
  	r=LCD_RD_DATA();  		  						//实际坐标颜色
- 	if(lcddev.id==0X9341||lcddev.id==0X5310||lcddev.id==0X5510||lcddev.id==0X9486)		//9341/NT35310/NT35510要分2次读出
+	
+ 	if(lcddev.id==0X9341||lcddev.id==0X5310||lcddev.id==0X5510)		//9341/NT35310/NT35510要分2次读出
  	{
 		opt_delay(2);	  
 		b=LCD_RD_DATA(); 
 		g=r&0XFF;		//对于9341/5310/5510,第一次读取的是RG的值,R在前,G在后,各占8位
 		g<<=8;
 	} 
-	if(lcddev.id==0X9325||lcddev.id==0X4535||lcddev.id==0X4531||lcddev.id==0XB505||lcddev.id==0XC505)return r;	//这几种IC直接返回颜色值
-	else if(lcddev.id==0X9341||lcddev.id==0X5310||lcddev.id==0X5510||lcddev.id==0X9486)return (((r>>11)<<11)|((g>>10)<<5)|(b>>11));//ILI9341/NT35310/NT35510需要公式转换一下
+	
+	if(lcddev.id==0X9325||lcddev.id==0X4535||lcddev.id==0X4531||lcddev.id==0XB505||lcddev.id==0XC505||lcddev.id==0X9486)return r;	//这几种IC直接返回颜色值
+	else if(lcddev.id==0X9341||lcddev.id==0X5310||lcddev.id==0X5510)return (((r>>11)<<11)|((g>>10)<<5)|(b>>11));//ILI9341/NT35310/NT35510需要公式转换一下
 	else return LCD_BGR2RGB(r);						//其他IC
-}			 
+}			
+
 //LCD开启显示
 void LCD_DisplayOn(void)
 {					   
@@ -2753,10 +2761,10 @@ void LCD_Init(void)
 	}		 
 	
 
-	LCD_Display_Dir(0);		//默认为竖屏
+	LCD_Display_Dir(0);		//0竖屏，1横屏，默认为竖屏
 
 	LCD_LED=1;				//点亮背光
-	LCD_Clear(BLUE);
+	LCD_Clear(BLACK);
 }  
 
 
