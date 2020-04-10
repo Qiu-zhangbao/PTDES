@@ -644,24 +644,6 @@ void LCD_Set_Window(u16 sx,u16 sy,u16 width,u16 height)
 	}
 }
 
-
-void LCD_SetParam(void)
-{ 
-	lcddev.setxcmd=0x2A;
-	lcddev.setycmd=0x2B;
-	lcddev.wramcmd=0x2C;
-#if USE_HORIZONTAL==0	//使用横屏	  
-	lcddev.dir=1;//横屏
-	lcddev.width=480;
-	lcddev.height=320;			
-	LCD_WriteReg(0x36,(1<<3)|(1<<7)|(1<<5));//BGR==1,MY==1,MX==0,MV==1
-#else//竖屏
-	lcddev.dir=0;//竖屏				 	 		
-	lcddev.width=320;
-	lcddev.height=480;	
-	LCD_WriteReg(0x36,(1<<3)|(1<<6)|(1<<7));//BGR==1,MY==0,MX==0,MV==0
-#endif
-}	  
 //初始化lcd
 //该初始化函数可以初始化各种ILI93XX液晶,但是其他函数是基于ILI9320的!!!
 //在其他型号的驱动芯片上没有测试! 
@@ -2798,11 +2780,11 @@ void LCD_Clear(u16 color)
 		lcddev.setycmd=0X2A;  	 
  	}else if(lcddev.id==0X9486)
 	{
-			LCD_SetWindows(0,0,lcddev.width-1,lcddev.height-1);	
+		LCD_SetWindows(0,0,lcddev.width-1,lcddev.height-1);	
 	}
 	else
 	{
-			LCD_SetCursor(0x00,0x0000);	//设置光标位置 
+		LCD_SetCursor(0x00,0x0000);	//设置光标位置 
 	}
 
 	LCD_WriteRAM_Prepare();     		//开始写入GRAM	 	  
