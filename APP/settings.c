@@ -822,7 +822,7 @@ void sysset_system_about(u16 x,u16 y,u8*caption)
 		app_get_version(verbuf,SOFTWARE_VERSION,3);
 		strcat((char*)tbuf,(const char*)verbuf);
   		gui_show_string(tbuf,x+10,y+32+34,180,12,12,BLACK);//显示信息
- 		gui_show_string("Copyright (C) 2015~2025",x+10,y+32+34+20*1,180,12,12,BLACK);//显示信息
+ 		gui_show_string("Copyright (C) 2020~2025",x+10,y+32+34+20*1,180,12,12,BLACK);//显示信息
  		gui_show_string("广州星翼电子科技有限公司",x+10,y+32+34+20*2,180,12,12,BLACK);//显示信息
  		gui_show_string("www.openedv.com",x+10,y+32+34+20*3,180,12,12,BLACK);//显示信息
  

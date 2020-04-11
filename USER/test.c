@@ -333,22 +333,22 @@ REINIT://重新初始化
 		fsize=12;
 		icowidth=18;
 		okoffset=190;
-//		app_show_mono_icos(5,ypos,icowidth,24,(u8*)APP_ALIENTEK_ICO1824,YELLOW,BLACK);
+		app_show_mono_icos(5,ypos,icowidth,24,(u8*)APP_ALIENTEK_ICO1824,YELLOW,BLACK);
 	}else if(lcddev.width==320)
 	{
 		fsize=16;
 		icowidth=24;
 		okoffset=250;
-//		app_show_mono_icos(5,ypos,icowidth,32,(u8*)APP_ALIENTEK_ICO2432,YELLOW,BLACK);		
+		app_show_mono_icos(5,ypos,icowidth,32,(u8*)APP_ALIENTEK_ICO2432,YELLOW,BLACK);		
 	}else if(lcddev.width==480)
 	{
 		fsize=24;
 		icowidth=36;
 		okoffset=370;
-//		app_show_mono_icos(5,ypos,icowidth,48,(u8*)APP_ALIENTEK_ICO3648,YELLOW,BLACK);		
+		app_show_mono_icos(5,ypos,icowidth,48,(u8*)APP_ALIENTEK_ICO3648,YELLOW,BLACK);		
 	}
-//	LCD_ShowString(icowidth+5*2,ypos+fsize*j++,lcddev.width,lcddev.height,fsize, "ALIENTEK STM32F1 Elite V1");
-//	LCD_ShowString(icowidth+5*2,ypos+fsize*j++,lcddev.width,lcddev.height,fsize,"Copyright (C) 2015-2025");    
+	LCD_ShowString(icowidth+5*2,ypos+fsize*j++,lcddev.width,lcddev.height,fsize, "ALIENTEK STM32F1 Elite V1");
+	LCD_ShowString(icowidth+5*2,ypos+fsize*j++,lcddev.width,lcddev.height,fsize,"Copyright (C) 2020-2025");    
 	app_get_version(verbuf,HARDWARE_VERSION,2);
 	strcpy((char*)version,"HARDWARE:");
 	strcat((char*)version,(const char*)verbuf);
